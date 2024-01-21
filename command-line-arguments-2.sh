@@ -13,10 +13,11 @@ set -o errexit -o nounset -o pipefail
 function help() {
 	local -r self=$(basename "$0")
 
-	echo "# ${self}"
-	echo "# Convert INPUT to all upper case."
-	echo "#"
-	echo "# Usage: ${self} [-h|--help] INPUT"
+	echo "Usage: ${self} [OPTION] INPUT"
+	echo "Convert INPUT to upper case (default) or lower case."
+	echo
+	echo "  -h, --help   display this help and exit"
+	echo "  -l, --lower  convert INPUT to lower case"
 }
 
 declare -a POSITIONAL_ARGS=()
