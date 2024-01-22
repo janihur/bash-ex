@@ -6,6 +6,7 @@
 # strict mode
 # http://www.binaryphile.com/bash/2018/08/09/approach-bash-like-a-developer-part-11-strict-mode.html
 set -o errexit -o nounset -o pipefail
+set -o | grep errexit # demonstrate that errexit is on
 
 # -----------------------------------------------------------------------------
 # standard help and command line argument processing
@@ -56,25 +57,41 @@ fi
 # functions
 
 function main () {
+	# shell options local to the function
+	# remember dymamic scoping!
+	local -
+	set +o errexit # disable errexit on this (dynamic) scope
+
 	local -r input="$@"
+	local retval=0
 	local output=unset
+	local side_effect=unset
 
 	if [[ "${IS_LOWER}" == true ]]; then
-		lower $input
+		output=$(lower "${input}") # runs in a subshell, no side effects
+		retval=$?
 	else
-		upper $input
+		upper "${input}"
+		retval=$?
 	fi
 
-	echo "${output}"
+	echo "retval: ${retval}"
+	echo "output: ${output}"
+	echo "side_effect: ${side_effect}"
 }
 
 function upper() {
-	output="${@@U}" # uppercase
+	output="${1@U}" # uppercase
+	side_effect=${output}
+	return 1
 }
 
 function lower() {
-	output="${@@L}" # lowercase
+	echo "${1@L}" # lowercase
+	side_effect=${output}
+	return 2
 }
 
 # -----------------------------------------------------------------------------
 main "$@"
+set -o | grep errexit # demonstrate that errexit is on
