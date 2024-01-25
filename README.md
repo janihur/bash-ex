@@ -6,12 +6,15 @@ Bash code snippets and examples.
 * [Approach Bash Like a Developer](http://www.binaryphile.com/bash/2018/07/26/approach-bash-like-a-developer-part-1-intro.html)
 * [How do I parse command line arguments in Bash?](https://stackoverflow.com/q/192249/272735)
 
-## Bash Manual
+## Bash Reference Manual
+
+Frequently visited parts.
 
 * [Table of Contents](https://www.gnu.org/software/bash/manual/html_node/index.html)
 * [Shell Parameter Expansion](https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html)
 * [Redirections](https://www.gnu.org/software/bash/manual/html_node/Redirections.html)
 * [Here Documents](https://www.gnu.org/software/bash/manual/html_node/Redirections.html#Here-Documents)
+* [The Set Builtin](https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html)
 
 ## Bash Tools
 
