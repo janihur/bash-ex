@@ -34,7 +34,7 @@ while (( $# )); do
 			IS_LOWER=true
 			shift
 			;;
-		-*|--*)
+		-*)
 			echo "ERROR: unknown option $1"
 			exit 1
 			;;
@@ -62,7 +62,7 @@ function main () {
 	local -
 	set +o errexit # disable errexit on this (dynamic) scope
 
-	local -r input="$@"
+	local -r input="$1"
 	local retval=0
 	local output=unset
 	local side_effect=unset
@@ -88,7 +88,7 @@ function upper() {
 
 function lower() {
 	echo "${1@L}" # lowercase
-	side_effect=${output}
+	side_effect="${1@L}"
 	return 2
 }
 
